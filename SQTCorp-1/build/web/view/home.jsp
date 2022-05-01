@@ -24,22 +24,26 @@
                 <li><a href="http://localhost:8080/SQTCorp-1/">Trang chủ</a></li>
                 <li><a href="">Đồng hồ nam</a></li>
                 <li><a href="">Đồng hồ nữ</a></li>
-                <li><a href="">Thương hiệu</a>
-                    <table class ="sub-menu">
-                        <tr>
-                            <th><a href="">Đồng hồ OP</a></th>
-                            <th><a href="">Đồng hồ Citizen</a></th>
-                            <th><a href="">Đồng hồ đôi</a></th>
-                        </tr>
-                        <tr>
-                            <td><a href="">Đồng hồ Olym Pianus</a></td>
-                            <td><a href="">Đồng hồ Orient</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="">Đồng hồ Ogival</a></td>
-                            <td><a href="">Đồng hồ Seiko</a></td>
-                        </tr>
-                    </table>
+                
+                <li><a href="">Thương hiệu <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
+                            <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
+                          </svg></a>
+                    
+                    <div class ="sub-menu row" style="width: 500px;">
+                        <div class="col-sm-4">
+                            <a href=""><strong>Đồng hồ OP</strong></a> <br>
+                            <a href="">- Đồng hồ Olym Pianus</a><br>
+                            <a href="">- Đồng hồ Ogival</a><br>
+                        </div>
+                        <div class="col-sm-4">
+                            <a href=""><strong>Đồng hồ Citizen</strong></a><br>
+                            <a href="">- Đồng hồ Orient</a><br>
+                            <a href="">- Đồng hồ Seiko</a><br>
+                        </div>
+                        <div class="col-sm-4">
+                            <a href=""><strong>Đồng hồ Đôi</strong></a><br>
+                        </div>
+                    </div>
                 </li>
                 <li><a href="">Phụ kiện đồng hồ</a></li>
                 <li><a href="">Tin tức</a></li>
@@ -109,7 +113,7 @@
                     </div>
                     <div style="padding-left: 20px;">
                         <span><strong>ƯU ĐÃI SẢN PHẨM</strong></span> <br> <br>
-                        <span>Giúp người tiêu dùng sở hữu sản phẩm với giá ữu đãi tốt</span>
+                        <span>Giúp người tiêu dùng sở hữu sản phẩm với giá ưu đãi tốt</span>
                     </div>
                 </div>
             </div> <br> <br>
