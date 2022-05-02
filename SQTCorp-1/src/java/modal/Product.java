@@ -7,6 +7,7 @@ public class Product {
     String image;
     Float price;
     String brand;
+    String sex;
     String dial;
     String type;
     Float diameter;
@@ -113,6 +114,32 @@ public class Product {
 
     public Product() {
     }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public Product(String code, String name, String image, Float price, String brand, String sex, String dial, String type, Float diameter, String shape, String stuff, String source, String description) {
+        this.code = code;
+        this.name = name;
+        this.image = image;
+        this.price = price;
+        this.brand = brand;
+        this.sex = sex;
+        this.dial = dial;
+        this.type = type;
+        this.diameter = diameter;
+        this.shape = shape;
+        this.stuff = stuff;
+        this.source = source;
+        this.description = description;
+    }
+    
+    
     
     
 }

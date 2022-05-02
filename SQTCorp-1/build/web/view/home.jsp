@@ -1,3 +1,10 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="controller.Database"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="modal.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
     <head>
@@ -9,11 +16,6 @@
         
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
         <link rel="stylesheet" href ="styles/main.css" type="text/css"/>
-        <style>
-            table, th, td {
-              border:1px solid black;
-            }
-        </style>
     </head>
     <body>
         <header>
@@ -70,23 +72,132 @@
                 <div class="dot"></div>
             </div>
         </section> <br>
+            
+            
         
         <div>
             <div>
                 <img src="images/fs-img.jpg" style="display: block; margin-left: auto; margin-right: auto;">
             </div> <br>
+                
+            <div>
+                <h2 style="width: 100%; text-align: center; border-bottom: 2px solid #000; line-height: 0.1em; margin: 10px 0 20px;">
+                    <span style="background:#fff; padding:0 10px; ">Sản phẩm</span>
+                </h2>
+            </div> <br>
+                
+            <div class="row" style="padding: 0px 100px;">
+                <%
+                
+                String urlString = "jdbc:mysql://localhost:3306/watchshop?zeroDateTimeBehavior=CONVERT_TO_NULL";
+                String username = "root";
+                String password = "123456";
+                String image = "";
+                String name = "";
+                float price = 0;
+                
+                try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(urlString, username, password);
             
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery("Select * from product");
+            while(rs.next()){
+                name = rs.getString("Name");
+                image= rs.getString("Image");
+                price = rs.getFloat("Price");
+                %>
+                <div class="col-sm-3 product-item">
+                    <div>
+                        <img style="width: 100%;height: 50%;" src=<%=image%> alt=""/>
+                    </div>
+                    <div style="padding-top: 20px;padding-bottom: 50px; width: 100%;height: 100%;text-align: center;">
+                        <span><%=name%></span> <br> <br>
+                        <span><strong><%= price + "đ" %></strong></span>
+                    </div>
+                </div>
+                <%
+            }
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("Can't connect");
+        }
+            %>
+            </div> <br> <br> <br>
+
             <div>
                 <h2 style="width: 100%; text-align: center; border-bottom: 2px solid #000; line-height: 0.1em; margin: 10px 0 20px;">
                     <span style="background:#fff; padding:0 10px; ">Đồng hồ nam</span>
                 </h2>
             </div> <br>
+                
+            <div class="row" style="padding: 0px 100px;">
+                <%
+                try {
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    Connection conn = DriverManager.getConnection(urlString, username, password);
+
+                    Statement statement = conn.createStatement();
+                    ResultSet rs = statement.executeQuery("Select * from product where sex='Male'");
+                    while(rs.next()){
+                        name = rs.getString("Name");
+                        image= rs.getString("Image");
+                        price = rs.getFloat("Price");
+                        %>
+                        <div class="col-sm-3 product-item">
+                            <div>
+                                <img style="width: 100%;height: 50%;" src=<%=image%> alt=""/>
+                            </div>
+                            <div style="padding-top: 20px;padding-bottom: 50px; width: 100%;height: 100%;text-align: center;">
+                                <span><%=name%></span> <br> <br>
+                                <span><strong><%= price + "đ" %></strong></span>
+                            </div>
+                        </div>
+                        <%
+                    }
+                    conn.close();
+                } catch (Exception e) {
+                    System.out.println("Can't connect");
+                }
+                    %>
+            </div> <br> <br> <br>
             
             <div>
                 <h2 style="width: 100%; text-align: center; border-bottom: 2px solid #000; line-height: 0.1em; margin: 10px 0 20px;">
                     <span style="background:#fff; padding:0 10px; ">Đồng hồ nữ</span>
                 </h2>
             </div> <br>
+                
+            <div class="row" style="padding: 0px 100px;">
+                <%
+                try {
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    Connection conn = DriverManager.getConnection(urlString, username, password);
+
+                    Statement statement = conn.createStatement();
+                    ResultSet rs = statement.executeQuery("Select * from product where sex='Female'");
+                    while(rs.next()){
+                        name = rs.getString("Name");
+                        image= rs.getString("Image");
+                        price = rs.getFloat("Price");
+                        %>
+                        <div class="col-sm-3 product-item">
+                            <div>
+                                <img style="width: 100%;height: 50%;" src=<%=image%> alt=""/>
+                            </div>
+                            <div style="padding-top: 20px;padding-bottom: 50px; width: 100%;height: 100%;text-align: center;">
+                                <span><%=name%></span> <br> <br>
+                                <span><strong><%= price + "đ" %></strong></span>
+                            </div>
+                        </div>
+                        <%
+                    }
+                    conn.close();
+                } catch (Exception e) {
+                    System.out.println("Can't connect");
+                }
+                    %>
+            </div> <br> <br> <br>
             
             <div class="row">
                 <div class="col-sm-4 item-inf">
