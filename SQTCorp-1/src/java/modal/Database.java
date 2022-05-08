@@ -10,22 +10,22 @@ public class Database {
     public static String username = "root";
     public static String password = "123456";
     
-    public static ArrayList<Product> list = new ArrayList<>();
-    
     private static boolean exist(String code) {
+        ArrayList<Product> list = new ArrayList<>();
         for(int i=0; i<list.size(); i++) {
             if(list.get(i).getCode().equals(code)) return false;
         }
         return true;
     }
     
-    public static ArrayList<Product> getProduct() {
+    public static ArrayList<Product> getProduct(String s) {
+        ArrayList<Product> list = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(urlString, username, password);
             
             Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery("Select * from product");
+            ResultSet rs = statement.executeQuery(s);
             while(rs.next()){
                 String code = rs.getString("Code");
                 String name = rs.getString("Name");
@@ -51,7 +51,32 @@ public class Database {
         }
     }
     
+    public static ArrayList<Product> getMiniProduct(String s) {
+        ArrayList<Product> list = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(urlString, username, password);
+            
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(s);
+            while(rs.next()){
+                String code = rs.getString("Code");
+                String name = rs.getString("Name");
+                String image= rs.getString("Image");
+                float price = rs.getFloat("Price");
+                if(exist(code))
+                list.add(new Product(code, name, image, price));
+            }
+            conn.close();
+            return list;
+        } catch (Exception e) {
+            System.out.println("Khong ket noi duoc csdl");
+            return null;
+        }
+    }
+    
     public static void addProduct(Product product) {
+        ArrayList<Product> list = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(urlString, username, password);
@@ -69,6 +94,7 @@ public class Database {
     }
     
     public static void delProduct(String productCode) {
+        ArrayList<Product> list = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(urlString, username, password);

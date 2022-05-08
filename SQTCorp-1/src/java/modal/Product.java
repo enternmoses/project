@@ -16,6 +16,13 @@ public class Product {
     String source;
     String description;
 
+    public Product(String code, String name, String image, Float price) {
+        this.code = code;
+        this.name = name;
+        this.image = image;
+        this.price = price;
+    }
+
     public String getCode() {
         return code;
     }

@@ -12,41 +12,41 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
-        <link rel="stylesheet" href ="styles/main.css" type="text/css"/>
+        <link rel="stylesheet" href ="../../styles/main.css" type="text/css"/>
     </head>
     <body>
         <header>
             <div class="logo">
-                <a href="http://localhost:8080/SQTCorp-1/"><img src ="images/logo.png" style="max-width: 190px; display: block; margin-left: auto; margin-right: auto;"></a>
+                <a href="http://localhost:8080/SQTCorp-1/"><img src ="../../images/logo.png" style="max-width: 190px; display: block; margin-left: auto; margin-right: auto;"></a>
             </div>
             <div class="menu">
                 <li><a href="http://localhost:8080/SQTCorp-1/">Trang chủ</a></li>
-                <li><a href="view/maleWatch.jsp">Đồng hồ nam</a></li>
-                <li><a href="view/femaleWatch.jsp">Đồng hồ nữ</a></li>
+                <li><a href="../maleWatch.jsp">Đồng hồ nam</a></li>
+                <li><a href="../femaleWatch.jsp">Đồng hồ nữ</a></li>
                 
-                <li><a href="view/brand.jsp">Thương hiệu <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
+                <li><a href="brand.jsp">Thương hiệu <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
                             <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
                           </svg></a>
                     
                     <div class ="sub-menu row" style="width: 500px;">
                         <div class="col-sm-4">
-                            <a href="view/brand/OP.jsp"><strong>Đồng hồ OP</strong></a> <br>
-                            <a href="view/brand/OlymPianus.jsp">- Đồng hồ Olym Pianus</a><br>
-                            <a href="view/brand/Ogival.jsp">- Đồng hồ Ogival</a><br>
+                            <a href="OP.jsp"><strong>Đồng hồ OP</strong></a> <br>
+                            <a href="OlymPianus.jsp">- Đồng hồ Olym Pianus</a><br>
+                            <a href="Ogival.jsp">- Đồng hồ Ogival</a><br>
                         </div>
                         <div class="col-sm-4">
-                            <a href="view/brand/Citizen.jsp"><strong>Đồng hồ Citizen</strong></a><br>
-                            <a href="view/brand/Orient.jsp">- Đồng hồ Orient</a><br>
-                            <a href="view/brand/Seiko.jsp">- Đồng hồ Seiko</a><br>
+                            <a href="Citizen.jsp"><strong>Đồng hồ Citizen</strong></a><br>
+                            <a href="Orient.jsp">- Đồng hồ Orient</a><br>
+                            <a href="Seiko.jsp">- Đồng hồ Seiko</a><br>
                         </div>
                         <div class="col-sm-4">
-                            <a href="view/brand/couple.jsp"><strong>Đồng hồ Đôi</strong></a><br>
+                            <a href="couple.jsp"><strong>Đồng hồ Đôi</strong></a><br>
                         </div>
                     </div>
                 </li>
-                <li><a href="view/accessory.jsp">Phụ kiện đồng hồ</a></li>
-                <li><a href="view/new.jsp">Tin tức</a></li>
-                <li><a href="view/contact.jsp">Liên hệ</a></li>
+                <li><a href="../accessory.jsp">Phụ kiện đồng hồ</a></li>
+                <li><a href="../new.jsp">Tin tức</a></li>
+                <li><a href="../contact.jsp">Liên hệ</a></li>
                 
             </div>
             <div class ="others">
@@ -55,122 +55,38 @@
                 <li><a class="fa-solid fa-cart-shopping" href=""></a></li>
             </div>
         </header>
-        <section id ="Slider">
-            <div class="aspect-ratio-169">
-                <img src="images/slide-1.jpg">
-                <img src="images/slide-2.jpg">
-                <img src="images/slide-3.jpg">
-                <img src="images/slide-4.jpg">
-            </div>
-            <div class="dot-container">
-                <div class="dot active"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-            </div>
-        </section> <br>
             
             
         
         <div>
-            <div>
-                <img src="images/fs-img.jpg" style="display: block; margin-left: auto; margin-right: auto;">
-            </div> <br>
-                
+            <br><br>
             <div>
                 <h2 style="width: 100%; text-align: center; border-bottom: 2px solid #000; line-height: 0.1em; margin: 10px 0 20px;">
-                    <span style="background:#fff; padding:0 10px; ">Sản phẩm</span>
+                    <span style="background:#fff; padding:0 10px; ">Đồng hồ Seiko</span>
                 </h2>
             </div> <br>
                 
             <div class="row" style="padding: 0px 100px;">
-                <% ArrayList<Product> listAll = Database.getMiniProduct("Select * from product");%>
-                <% ArrayList<Product> listMale = Database.getMiniProduct("Select * from product where Sex ='Male'");%>
-                <% ArrayList<Product> listFemale = Database.getMiniProduct("Select * from product where Sex ='Female'");%>
+                <% ArrayList<Product> list = Database.getMiniProduct("Select * from product where brand ='SEIKO'");%>
                 <%
                 String pattern = "###,###.##";
                 
                 DecimalFormat decimalFormat = new DecimalFormat(pattern);
                 
-                for(int i=0; i<Math.min(8, listAll.size()); i++){ %>
+                for(int i=0; i<list.size(); i++){ %>
                 <div class="col-sm-3 product-item">
                     <div>
-                        <img style="width: 100%;height: 50%;" src=<%= listAll.get(i).getImage() %> alt=""/>
+                        <img style="width: 100%;height: 50%;" src=<%= "../../" + list.get(i).getImage() %> alt=""/>
                     </div>
                     <div style="padding-top: 20px;padding-bottom: 50px; width: 100%;height: 100%;text-align: center;">
-                        <span><%= listAll.get(i).getName() %></span> <br> <br>
-                                <span><strong><%=decimalFormat.format(listAll.get(i).getPrice())+ "đ"%></strong></span> <br>
+                        <span><%= list.get(i).getName() %></span> <br> <br>
+                                <span><strong><%=decimalFormat.format(list.get(i).getPrice())+ "đ"%></strong></span> <br>
                                 
                                 
                         <form action="edit" method="get">
                 
                             <input type="hidden" name="action" value="add">
-                            <input type="hidden" name="productCode" value=<%=listAll.get(i).getCode() %>>
-                            <button type="button" class="btn btn-danger" name="add" style="margin-top: 20px;">Add Product</button>
-                        </form>
-                    </div>
-                    
-                </div>
-                        
-                <% } %>
-            </div> 
-            <br> <br> <br>
-
-            <div>
-                <h2 style="width: 100%; text-align: center; border-bottom: 2px solid #000; line-height: 0.1em; margin: 10px 0 20px;">
-                    <span style="background:#fff; padding:0 10px; ">Đồng hồ nam</span>
-                </h2>
-            </div> <br>
-                
-            <div class="row" style="padding: 0px 100px;">
-                <%
-                for(int i=0; i<Math.min(8, listMale.size()); i++){ %>
-                <div class="col-sm-3 product-item">
-                    <div>
-                        <img style="width: 100%;height: 50%;" src=<%= listMale.get(i).getImage() %> alt=""/>
-                    </div>
-                    <div style="padding-top: 20px;padding-bottom: 50px; width: 100%;height: 100%;text-align: center;">
-                        <span><%= listMale.get(i).getName() %></span> <br> <br>
-                                <span><strong><%=decimalFormat.format(listMale.get(i).getPrice())+ "đ"%></strong></span> <br>
-                                
-                                
-                        <form action="edit" method="get">
-                
-                            <input type="hidden" name="action" value="add">
-                            <input type="hidden" name="productCode" value=<%=listMale.get(i).getCode() %>>
-                            <button type="button" class="btn btn-danger" name="add" style="margin-top: 20px;">Add Product</button>
-                        </form>
-                    </div>
-                    
-                </div>
-                        
-                <% } %>
-            </div> 
-            <br> <br> <br>
-                        
-            <div>
-                <h2 style="width: 100%; text-align: center; border-bottom: 2px solid #000; line-height: 0.1em; margin: 10px 0 20px;">
-                    <span style="background:#fff; padding:0 10px; ">Đồng hồ nữ</span>
-                </h2>
-            </div> <br>
-                
-            <div class="row" style="padding: 0px 100px;">
-                
-                <%
-                for(int i=0; i<Math.min(8, listFemale.size()); i++){ %>
-                <div class="col-sm-3 product-item">
-                    <div>
-                        <img style="width: 100%;height: 50%;" src=<%= listFemale.get(i).getImage() %> alt=""/>
-                    </div>
-                    <div style="padding-top: 20px;padding-bottom: 50px; width: 100%;height: 100%;text-align: center;">
-                        <span><%= listFemale.get(i).getName() %></span> <br> <br>
-                                <span><strong><%=decimalFormat.format(listFemale.get(i).getPrice())+ "đ"%></strong></span> <br>
-                                
-                                
-                        <form action="edit" method="get">
-                
-                            <input type="hidden" name="action" value="add">
-                            <input type="hidden" name="productCode" value=<%=listFemale.get(i).getCode() %>>
+                            <input type="hidden" name="productCode" value=<%=list.get(i).getCode() %>>
                             <button type="button" class="btn btn-danger" name="add" style="margin-top: 20px;">Add Product</button>
                         </form>
                     </div>
@@ -185,7 +101,7 @@
             <div class="row">
                 <div class="col-sm-4 item-inf">
                     <div>
-                        <img src="images/icon-shipping.png"  style="max-width: 80px;">
+                        <img src="../../images/icon-shipping.png"  style="max-width: 80px;">
                     </div>
                     <div style="padding-left: 20px;">
                         <span><strong>GIAO HÀNG MIỄN PHÍ</strong></span> <br> <br>
@@ -194,7 +110,7 @@
                 </div>
                 <div class="col-sm-4 item-inf">
                     <div>
-                        <img src="images/icon-refund.png"  style="max-width: 80px;">
+                        <img src="../../images/icon-refund.png"  style="max-width: 80px;">
                     </div>
                     <div style="padding-left: 20px;">
                         <span><strong>CHÍNH SÁCH HOÀN TIỀN</strong></span> <br> <br>
@@ -203,7 +119,7 @@
                 </div>
                 <div class="col-sm-4 item-inf">
                     <div>
-                        <img src="images/icon-gift.jpg"  style="max-width: 80px;">
+                        <img src="../../images/icon-gift.jpg"  style="max-width: 80px;">
                     </div>
                     <div style="padding-left: 20px;">
                         <span><strong>ƯU ĐÃI SẢN PHẨM</strong></span> <br> <br>
@@ -214,7 +130,7 @@
             
             <div>
                 <div >
-                    <img src="images/slide-footer.jpg" style="height: 100%;width: 100%;position: absolute;z-index: -1;">
+                    <img src="../../images/slide-footer.jpg" style="height: 100%;width: 100%;position: absolute;z-index: -1;">
                 </div>
                 <div class="row" style="padding: 30px;padding-top: 50px;">
                     <div class="col-sm-4 contact">
@@ -262,7 +178,7 @@
         </div>
         
         
-        <a href=""><img src ="images/messenger.png" style="max-width: 80px;position: fixed; bottom: 30px; right: 30px;"></a>
+        <a href=""><img src ="../../images/messenger.png" style="max-width: 80px;position: fixed; bottom: 30px; right: 30px;"></a>
     </body>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

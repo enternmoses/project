@@ -1,9 +1,6 @@
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Connection"%>
-<%@page import="controller.Database"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="controller.Database"%>
 <%@page import="modal.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
@@ -24,32 +21,32 @@
             </div>
             <div class="menu">
                 <li><a href="http://localhost:8080/SQTCorp-1/">Trang chủ</a></li>
-                <li><a href="">Đồng hồ nam</a></li>
-                <li><a href="">Đồng hồ nữ</a></li>
+                <li><a href="view/maleWatch.jsp">Đồng hồ nam</a></li>
+                <li><a href="view/femaleWatch.jsp">Đồng hồ nữ</a></li>
                 
-                <li><a href="">Thương hiệu <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
+                <li><a href="view/brand.jsp">Thương hiệu <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
                             <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
                           </svg></a>
                     
                     <div class ="sub-menu row" style="width: 500px;">
                         <div class="col-sm-4">
-                            <a href=""><strong>Đồng hồ OP</strong></a> <br>
-                            <a href="">- Đồng hồ Olym Pianus</a><br>
-                            <a href="">- Đồng hồ Ogival</a><br>
+                            <a href="view/brand/OP.jsp"><strong>Đồng hồ OP</strong></a> <br>
+                            <a href="view/brand/OlymPianus.jsp">- Đồng hồ Olym Pianus</a><br>
+                            <a href="view/brand/Ogival.jsp">- Đồng hồ Ogival</a><br>
                         </div>
                         <div class="col-sm-4">
-                            <a href=""><strong>Đồng hồ Citizen</strong></a><br>
-                            <a href="">- Đồng hồ Orient</a><br>
-                            <a href="">- Đồng hồ Seiko</a><br>
+                            <a href="view/brand/Citizen.jsp"><strong>Đồng hồ Citizen</strong></a><br>
+                            <a href="view/brand/Orient.jsp">- Đồng hồ Orient</a><br>
+                            <a href="view/brand/Seiko.jsp">- Đồng hồ Seiko</a><br>
                         </div>
                         <div class="col-sm-4">
-                            <a href=""><strong>Đồng hồ Đôi</strong></a><br>
+                            <a href="view/brand/couple.jsp"><strong>Đồng hồ Đôi</strong></a><br>
                         </div>
                     </div>
                 </li>
-                <li><a href="">Phụ kiện đồng hồ</a></li>
-                <li><a href="">Tin tức</a></li>
-                <li><a href="">Liên hệ</a></li>
+                <li><a href="view/accessory.jsp">Phụ kiện đồng hồ</a></li>
+                <li><a href="view/new.jsp">Tin tức</a></li>
+                <li><a href="view/contact.jsp">Liên hệ</a></li>
                 
             </div>
             <div class ="others">
@@ -87,43 +84,37 @@
             </div> <br>
                 
             <div class="row" style="padding: 0px 100px;">
+                <% ArrayList<Product> listAll = Database.getMiniProduct("Select * from product");%>
+                <% ArrayList<Product> listMale = Database.getMiniProduct("Select * from product where Sex ='Male'");%>
+                <% ArrayList<Product> listFemale = Database.getMiniProduct("Select * from product where Sex ='Female'");%>
                 <%
+                String pattern = "###,###.##";
                 
-                String urlString = "jdbc:mysql://localhost:3306/watchshop?zeroDateTimeBehavior=CONVERT_TO_NULL";
-                String username = "root";
-                String password = "123456";
-                String image = "";
-                String name = "";
-                float price = 0;
+                DecimalFormat decimalFormat = new DecimalFormat(pattern);
                 
-                try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(urlString, username, password);
-            
-            Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery("Select * from product");
-            while(rs.next()){
-                name = rs.getString("Name");
-                image= rs.getString("Image");
-                price = rs.getFloat("Price");
-                %>
+                for(int i=0; i<Math.min(8, listAll.size()); i++){ %>
                 <div class="col-sm-3 product-item">
                     <div>
-                        <img style="width: 100%;height: 50%;" src=<%=image%> alt=""/>
+                        <img style="width: 100%;height: 50%;" src=<%= listAll.get(i).getImage() %> alt=""/>
                     </div>
                     <div style="padding-top: 20px;padding-bottom: 50px; width: 100%;height: 100%;text-align: center;">
-                        <span><%=name%></span> <br> <br>
-                        <span><strong><%= price + "đ" %></strong></span>
+                        <span><%= listAll.get(i).getName() %></span> <br> <br>
+                                <span><strong><%=decimalFormat.format(listAll.get(i).getPrice())+ "đ"%></strong></span> <br>
+                                
+                                
+                        <form action="edit" method="get">
+                
+                            <input type="hidden" name="action" value="add">
+                            <input type="hidden" name="productCode" value=<%=listAll.get(i).getCode() %>>
+                            <button type="button" class="btn btn-danger" name="add" style="margin-top: 20px;">Add Product</button>
+                        </form>
                     </div>
+                    
                 </div>
-                <%
-            }
-            conn.close();
-        } catch (Exception e) {
-            System.out.println("Can't connect");
-        }
-            %>
-            </div> <br> <br> <br>
+                        
+                <% } %>
+            </div> 
+            <br> <br> <br>
 
             <div>
                 <h2 style="width: 100%; text-align: center; border-bottom: 2px solid #000; line-height: 0.1em; margin: 10px 0 20px;">
@@ -133,35 +124,30 @@
                 
             <div class="row" style="padding: 0px 100px;">
                 <%
-                try {
-                    Class.forName("com.mysql.cj.jdbc.Driver");
-                    Connection conn = DriverManager.getConnection(urlString, username, password);
-
-                    Statement statement = conn.createStatement();
-                    ResultSet rs = statement.executeQuery("Select * from product where sex='Male'");
-                    while(rs.next()){
-                        name = rs.getString("Name");
-                        image= rs.getString("Image");
-                        price = rs.getFloat("Price");
-                        %>
-                        <div class="col-sm-3 product-item">
-                            <div>
-                                <img style="width: 100%;height: 50%;" src=<%=image%> alt=""/>
-                            </div>
-                            <div style="padding-top: 20px;padding-bottom: 50px; width: 100%;height: 100%;text-align: center;">
-                                <span><%=name%></span> <br> <br>
-                                <span><strong><%= price + "đ" %></strong></span>
-                            </div>
-                        </div>
-                        <%
-                    }
-                    conn.close();
-                } catch (Exception e) {
-                    System.out.println("Can't connect");
-                }
-                    %>
-            </div> <br> <br> <br>
-            
+                for(int i=0; i<Math.min(8, listMale.size()); i++){ %>
+                <div class="col-sm-3 product-item">
+                    <div>
+                        <img style="width: 100%;height: 50%;" src=<%= listMale.get(i).getImage() %> alt=""/>
+                    </div>
+                    <div style="padding-top: 20px;padding-bottom: 50px; width: 100%;height: 100%;text-align: center;">
+                        <span><%= listMale.get(i).getName() %></span> <br> <br>
+                                <span><strong><%=decimalFormat.format(listMale.get(i).getPrice())+ "đ"%></strong></span> <br>
+                                
+                                
+                        <form action="edit" method="get">
+                
+                            <input type="hidden" name="action" value="add">
+                            <input type="hidden" name="productCode" value=<%=listMale.get(i).getCode() %>>
+                            <button type="button" class="btn btn-danger" name="add" style="margin-top: 20px;">Add Product</button>
+                        </form>
+                    </div>
+                    
+                </div>
+                        
+                <% } %>
+            </div> 
+            <br> <br> <br>
+                        
             <div>
                 <h2 style="width: 100%; text-align: center; border-bottom: 2px solid #000; line-height: 0.1em; margin: 10px 0 20px;">
                     <span style="background:#fff; padding:0 10px; ">Đồng hồ nữ</span>
@@ -169,35 +155,32 @@
             </div> <br>
                 
             <div class="row" style="padding: 0px 100px;">
+                
                 <%
-                try {
-                    Class.forName("com.mysql.cj.jdbc.Driver");
-                    Connection conn = DriverManager.getConnection(urlString, username, password);
-
-                    Statement statement = conn.createStatement();
-                    ResultSet rs = statement.executeQuery("Select * from product where sex='Female'");
-                    while(rs.next()){
-                        name = rs.getString("Name");
-                        image= rs.getString("Image");
-                        price = rs.getFloat("Price");
-                        %>
-                        <div class="col-sm-3 product-item">
-                            <div>
-                                <img style="width: 100%;height: 50%;" src=<%=image%> alt=""/>
-                            </div>
-                            <div style="padding-top: 20px;padding-bottom: 50px; width: 100%;height: 100%;text-align: center;">
-                                <span><%=name%></span> <br> <br>
-                                <span><strong><%= price + "đ" %></strong></span>
-                            </div>
-                        </div>
-                        <%
-                    }
-                    conn.close();
-                } catch (Exception e) {
-                    System.out.println("Can't connect");
-                }
-                    %>
-            </div> <br> <br> <br>
+                for(int i=0; i<Math.min(8, listFemale.size()); i++){ %>
+                <div class="col-sm-3 product-item">
+                    <div>
+                        <img style="width: 100%;height: 50%;" src=<%= listFemale.get(i).getImage() %> alt=""/>
+                    </div>
+                    <div style="padding-top: 20px;padding-bottom: 50px; width: 100%;height: 100%;text-align: center;">
+                        <span><%= listFemale.get(i).getName() %></span> <br> <br>
+                                <span><strong><%=decimalFormat.format(listFemale.get(i).getPrice())+ "đ"%></strong></span> <br>
+                                
+                                
+                        <form action="edit" method="get">
+                
+                            <input type="hidden" name="action" value="add">
+                            <input type="hidden" name="productCode" value=<%=listFemale.get(i).getCode() %>>
+                            <button type="button" class="btn btn-danger" name="add" style="margin-top: 20px;">Add Product</button>
+                        </form>
+                    </div>
+                    
+                </div>
+                        
+                <% } %>
+            </div> 
+            <br> <br> <br>
+                
             
             <div class="row">
                 <div class="col-sm-4 item-inf">
@@ -228,23 +211,6 @@
                     </div>
                 </div>
             </div> <br> <br>
-            
-            <div class="row">
-                <div class="col-sm-6">
-                    <div>
-                        <h2 style="width: 100%; text-align: center; border-bottom: 1px solid #000; line-height: 0.1em; margin: 10px 0 20px;">
-                            <span style="background:#fff; padding:0 10px; font-size: 20px;">Tin tức</span>
-                        </h2>
-                    </div> <br>
-                </div>
-                <div class="col-sm-6">
-                    <div>
-                        <h2 style="width: 100%; text-align: center; border-bottom: 1px solid #000; line-height: 0.1em; margin: 10px 0 20px;">
-                            <span style="background:#fff; padding:0 10px; font-size: 20px;">Ý kiến khách hàng</span>
-                        </h2>
-                    </div> <br>
-                </div>
-            </div>
             
             <div>
                 <div >
@@ -342,5 +308,12 @@
             dotItem[index].classList.add("active")
         }
         setInterval(imgSlide,5000)
+    </script>
+    <script>
+        $.fn.digits = function(){ 
+    return this.each(function(){ 
+        $(this).text( $(this).text().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") ); 
+    })
+}
     </script>
 </html>
