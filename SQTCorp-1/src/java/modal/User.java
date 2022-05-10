@@ -123,6 +123,13 @@ public class User {
         this.email = email;
         this.role = role;
     }
+
+    public User(String userName, String password, String name, String role) {
+        this.userName = userName;
+        this.password = password;
+        this.name = name;
+        this.role = role;
+    }
     
     
 }

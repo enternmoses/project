@@ -1,10 +1,11 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.text.DecimalFormat"%>
-<%@page import="controller.Database"%>
+<%@page import="modal.Database"%>
 <%@page import="modal.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
     <head>
+        <link rel="shortcut icon" href="images/logo.png" />
         <title>SQT Corp</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +22,7 @@
             </div>
             <div class="menu">
                 <li><a href="http://localhost:8080/SQTCorp-1/">Trang chủ</a></li>
-                <li><a href="view/maleWatch.jsp">Đồng hồ nam</a></li>
+                <li><a href="">Đồng hồ nam</a></li>
                 <li><a href="view/femaleWatch.jsp">Đồng hồ nữ</a></li>
                 
                 <li><a href="view/brand.jsp">Thương hiệu <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
@@ -49,10 +50,16 @@
                 <li><a href="view/contact.jsp">Liên hệ</a></li>
                 
             </div>
-            <div class ="others">
-                <li><input placeholder="Tìm sản phẩm" type= "text"><i class="fa-solid fa-magnifying-glass"></i></li>
-                <li><a class="fa-solid fa-user" href=""></a></li>
-                <li><a class="fa-solid fa-cart-shopping" href=""></a></li>
+            <div>
+                <div class ="others"  style="margin-right: 80px;">
+                    <li><input placeholder="Tìm sản phẩm" type= "text"><i class="fa-solid fa-magnifying-glass"></i></li>
+                </div>
+                <div style="display: flex;justify-content: flex-end;align-items: center; margin-right: 90px;">
+                    <li><a href="Login.jsp">Login <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
+  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/>
+</svg></a></li>
+                </div>
             </div>
         </header>
         <section id ="Slider">
@@ -261,11 +268,13 @@
             
         </div>
         
-        
-        <a href=""><img src ="images/messenger.png" style="max-width: 80px;position: fixed; bottom: 30px; right: 30px;"></a>
-    </body>
+        <div class="zalo-chat-widget" data-oaid="579745863508352884" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="1" data-width="300" data-height="500"></div>
+
+    <script src="https://sp.zalo.me/plugins/sdk.js"></script>
+         </body>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
     
     <script>
         const header = document.querySelector("header")
@@ -308,12 +317,5 @@
             dotItem[index].classList.add("active")
         }
         setInterval(imgSlide,5000)
-    </script>
-    <script>
-        $.fn.digits = function(){ 
-    return this.each(function(){ 
-        $(this).text( $(this).text().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") ); 
-    })
-}
     </script>
 </html>

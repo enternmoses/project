@@ -1,9 +1,8 @@
 
-package controller;
+package modal;
 
 import java.sql.*;
 import java.util.ArrayList;
-import modal.Product;
 
 public class Database {
     public static String urlString = "jdbc:mysql://localhost:3306/watchshop?zeroDateTimeBehavior=CONVERT_TO_NULL";
@@ -66,6 +65,29 @@ public class Database {
                 float price = rs.getFloat("Price");
                 if(exist(code))
                 list.add(new Product(code, name, image, price));
+            }
+            conn.close();
+            return list;
+        } catch (Exception e) {
+            System.out.println("Khong ket noi duoc csdl");
+            return null;
+        }
+    }
+    
+    public static ArrayList<User> getMiniUser(String s) {
+        ArrayList<User> list = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(urlString, username, password);
+            
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(s);
+            while(rs.next()){
+                String userName = rs.getString("userName");
+                String password = rs.getString("password");
+                String name= rs.getString("name");
+                String role = rs.getString("role");
+                list.add(new User(userName, password, name, role));
             }
             conn.close();
             return list;
