@@ -16,6 +16,17 @@ public class Product {
     String source;
     String description;
 
+    public Product(String code, String name, String image, Float price, String brand, String sex) {
+        this.code = code;
+        this.name = name;
+        this.image = image;
+        this.price = price;
+        this.brand = brand;
+        this.sex = sex;
+    }
+    
+    
+
     public Product(String code, String name, String image, Float price) {
         this.code = code;
         this.name = name;

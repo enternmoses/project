@@ -17,14 +17,14 @@ public class Database {
         return true;
     }
     
-    public static ArrayList<Product> getProduct(String s) {
+    public static ArrayList<Product> getProduct() {
         ArrayList<Product> list = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(urlString, username, password);
             
             Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery(s);
+            ResultSet rs = statement.executeQuery("select * from product");
             while(rs.next()){
                 String code = rs.getString("Code");
                 String name = rs.getString("Name");
@@ -32,21 +32,31 @@ public class Database {
                 float price = rs.getFloat("Price");
                 String brand= rs.getString("Brand");
                 String sex= rs.getString("Sex");
-                String dial= rs.getString("Dial");
-                String type= rs.getString("Type");
-                float diameter = rs.getFloat("Diameter");
-                String shape= rs.getString("Shape");
-                String stuff= rs.getString("Stuff");
-                String source= rs.getString("Source");
-                String description = rs.getString("Description");
                 if(exist(code))
-                list.add(new Product(code, name, image, price, brand, sex, dial, type, diameter, shape, stuff, source, description));
+                list.add(new Product(code, name, image, price, brand, sex));
             }
             conn.close();
             return list;
         } catch (Exception e) {
             System.out.println("Khong ket noi duoc csdl");
             return null;
+        }
+    }
+    
+    public static void alterProduct(String s) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(urlString, username, password);
+            
+            Statement statement = conn.createStatement();
+            boolean check = statement.execute(s);
+            if(check) {
+                System.out.println("Suscess!");
+            }
+            else System.out.println("Unsuscess!");
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("Khong ket noi duoc csdl");
         }
     }
     
@@ -71,6 +81,23 @@ public class Database {
         } catch (Exception e) {
             System.out.println("Khong ket noi duoc csdl");
             return null;
+        }
+    }
+    
+    public static void delProduct(String productCode) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(urlString, username, password);
+            
+            Statement statement = conn.createStatement();
+            boolean check = statement.execute("delete from product where code='" + productCode + "'");
+            if(check) {
+                System.out.println("Suscess!");
+            }
+            else System.out.println("Unsuscess!");
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("Khong ket noi duoc csdl");
         }
     }
     
@@ -105,24 +132,6 @@ public class Database {
             
             Statement statement = conn.createStatement();
             boolean check = statement.execute("Insert into product values('" + product.getCode() + "','" + product.getDescription() + "'," + product.getPrice() + ")");
-            if(check) {
-                System.out.println("Suscess!");
-            }
-            else System.out.println("Unsuscess!");
-            conn.close();
-        } catch (Exception e) {
-            System.out.println("Khong ket noi duoc csdl");
-        }
-    }
-    
-    public static void delProduct(String productCode) {
-        ArrayList<Product> list = new ArrayList<>();
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(urlString, username, password);
-            
-            Statement statement = conn.createStatement();
-            boolean check = statement.execute("delete from product where code='" + productCode + "'");
             if(check) {
                 System.out.println("Suscess!");
             }

@@ -244,3 +244,14 @@ footer{
     display: block;
     line-height: 40px;
 }
+
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 50em;
+}
+th, td {
+    border: 1px solid black;
+    text-align: left;
+    padding: .5em;
+}
