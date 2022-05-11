@@ -235,3 +235,12 @@ footer{
     padding: 50px;
     width: 200px;
 }
+
+.choice{
+    border: none;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    line-height: 40px;
+}

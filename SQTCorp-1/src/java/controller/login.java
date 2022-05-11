@@ -30,9 +30,9 @@ public class login extends HttpServlet {
         for (User user1 : list) {
             if(user1.getUserName().equalsIgnoreCase(user) && user1.getPassword().equals(pass)) {
                 if(user1.getRole().equals("buyer"))
-                    url="/view/homeBuyer.jsp";
+                    url="/homeBuyer.jsp";
                 if(user1.getRole().equals("seller")) 
-                    url="/view/homeSeller.jsp";
+                    url="/homeSeller.jsp";
             }
             else {
                 request.setAttribute("errorLogin", false);

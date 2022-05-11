@@ -20,36 +20,163 @@
             <div class="logo">
                 <a href="http://localhost:8080/SQTCorp-1/"><img src ="images/logo.png" style="max-width: 190px; display: block; margin-left: auto; margin-right: auto;"></a>
             </div>
-            <div class="menu">
-                <li><a href="http://localhost:8080/SQTCorp-1/">Trang chủ</a></li>
-                <li><a href="view/maleWatch.jsp">Đồng hồ nam</a></li>
-                <li><a href="view/femaleWatch.jsp">Đồng hồ nữ</a></li>
-                
-                <li><a href="view/brand.jsp">Thương hiệu <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
-                            <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
-                          </svg></a>
-                    
-                    <div class ="sub-menu row" style="width: 500px;">
-                        <div class="col-sm-4">
-                            <a href="view/brand/OP.jsp"><strong>Đồng hồ OP</strong></a> <br>
-                            <a href="view/brand/OlymPianus.jsp">- Đồng hồ Olym Pianus</a><br>
-                            <a href="view/brand/Ogival.jsp">- Đồng hồ Ogival</a><br>
-                        </div>
-                        <div class="col-sm-4">
-                            <a href="view/brand/Citizen.jsp"><strong>Đồng hồ Citizen</strong></a><br>
-                            <a href="view/brand/Orient.jsp">- Đồng hồ Orient</a><br>
-                            <a href="view/brand/Seiko.jsp">- Đồng hồ Seiko</a><br>
-                        </div>
-                        <div class="col-sm-4">
-                            <a href="view/brand/couple.jsp"><strong>Đồng hồ Đôi</strong></a><br>
-                        </div>
-                    </div>
+            <ul class="menu">
+                <li><a href="http://localhost:8080/SQTCorp-1/" style="border: none;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    line-height: 40px;">Trang chủ</a></li>
+                <li>
+                    <form action="productServlet" method="POST"> 
+                        <input type="submit" style="border: none;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    line-height: 40px;" value="Đồng hồ nam">
+                        <input type="hidden" name="choice" value="male">
+                    </form>
                 </li>
-                <li><a href="view/accessory.jsp">Phụ kiện đồng hồ</a></li>
-                <li><a href="view/new.jsp">Tin tức</a></li>
-                <li><a href="view/contact.jsp">Liên hệ</a></li>
-                
-            </div>
+                <li>
+                    <form action="productServlet" method="POST"> 
+                        <input type="submit" style="border: none;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    line-height: 40px;" value="Đồng hồ nữ">
+                        <input type="hidden" name="choice" value="female">
+                    </form>
+                </li>
+                <li>
+                    <form action="productServlet" method="POST"> 
+                        <input type="submit" value="Thương hiệu" style="border: none;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    line-height: 40px;">
+                        <input type="hidden" name="choice" value="brand">
+                    </form>
+                    <ul class ="sub-menu row" style="width: 500px;">
+                            <li>
+                                <form action="productServlet" method="POST"> 
+                                    <input type="submit" style="border: none;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    line-height: 40px;" value="Đồng hồ OP">
+                                    <input type="hidden" name="choice" value="OP">
+                                </form>
+                            </li> <br><br>
+                            <ul>
+                                <li>
+                                    <form action="productServlet" method="POST"> 
+                                        <input type="submit" style="border: none;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    line-height: 40px;" value="- Đồng hồ Olym Pianus">
+                                        <input type="hidden" name="choice" value="OlymPianus">
+                                    </form>
+                                </li> <br>
+                                <li>
+                                    <form action="productServlet" method="POST"> 
+                                        <input type="submit" style="border: none;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    line-height: 40px;" value="- Đồng hồ Ogival">
+                                        <input type="hidden" name="choice" value="Ogival">
+                                    </form>
+                                </li> <br>
+                            </ul>
+                            <li>
+                                <form action="productServlet" method="POST"> 
+                                    <input type="submit" style="border: none;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    line-height: 40px;" value="Đồng hồ Citizen">
+                                    <input type="hidden" name="choice" value="Citizen">
+                                </form>
+                            </li> <br><br>
+                            <ul>
+                                <li>
+                                    <form action="productServlet" method="POST"> 
+                                        <input type="submit" style="border: none;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    line-height: 40px;" value="- Đồng hồ Orient">
+                                        <input type="hidden" name="choice" value="Orient">
+                                    </form>
+                                </li> <br>
+                                <li>
+                                    <form action="productServlet" method="POST"> 
+                                        <input type="submit" style="border: none;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    line-height: 40px;" value="- Đồng hồ Seiko">
+                                        <input type="hidden" name="choice" value="Seiko">
+                                    </form>
+                                </li> <br>
+                            </ul>
+                            <li>
+                                <form action="productServlet" method="POST"> 
+                                    <input type="submit" style="border: none;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    line-height: 40px;" value="Đồng hồ đôi">
+                                    <input type="hidden" name="choice" value="couple">
+                                </form>
+                            </li> <br><br>
+                    </ul>
+                </li>
+                <li>
+                    <form action="productServlet" method="POST"> 
+                        <input type="submit" style="border: none;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    line-height: 40px;" value="Phụ kiện đồng hồ">
+                        <input type="hidden" name="choice" value="accessory">
+                    </form>
+                </li>
+                <li>
+                    <form action="productServlet" method="POST"> 
+                        <input type="submit" style="border: none;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    line-height: 40px;" value="Tin tức">
+                        <input type="hidden" name="choice" value="new">
+                    </form>
+                </li>
+                <li>
+                    <form action="productServlet" method="POST"> 
+                        <input type="submit" style="border: none;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    line-height: 40px;"value="Liên hệ">
+                        <input type="hidden" name="choice" value="contact">
+                    </form>
+                </li>
+            </ul>
             <div class ="others">
                 <li><input placeholder="Tìm sản phẩm" type= "text"><i class="fa-solid fa-magnifying-glass"></i></li>
                 <li><a class="fa-solid fa-user" href=""></a></li>
@@ -267,53 +394,4 @@
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     
-    <script>
-        const header = document.querySelector("header")
-        window.addEventListener("scroll",function(){
-            x=window.pageYOffset
-            if(x>0){
-                header.classList.add("sticky")
-            }
-            else{
-                header.classList.remove("sticky")
-            }
-        })
-        
-        
-        const imgPosition = document.querySelectorAll(".aspect-ratio-169 img")
-        const imgContainer = document.querySelector('.aspect-ratio-169')
-        const dotItem = document.querySelectorAll(".dot")
-        let index = 0
-        let imgNumber = imgPosition.length
-        //console.log(impPosition)
-        imgPosition.forEach(function(image,index){
-            image.style.left = index*100 + "%"
-            dotItem[index].addEventListener("click",function(){
-                slider(index)
-            })
-        })
-        function imgSlide(){
-            index++;
-            console.log(index)
-            if (index>=imgNumber){
-                index = 0
-            }
-            slider(index)   
-            
-        }
-        function slider(index){
-            imgContainer.style.left ="-" +index*100 +"%"
-            const dotActive=document.querySelector('.active')
-            dotActive.classList.remove("active")
-            dotItem[index].classList.add("active")
-        }
-        setInterval(imgSlide,5000)
-    </script>
-    <script>
-        $.fn.digits = function(){ 
-    return this.each(function(){ 
-        $(this).text( $(this).text().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") ); 
-    })
-}
-    </script>
 </html>
