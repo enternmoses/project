@@ -34,17 +34,16 @@ public class comfirmAlter extends HttpServlet {
         String sex = req.getParameter("sex");
         
         if(exist(code) == false) {
-            Database.alterProduct("UPDATE product" + "SET Name =" + name + ", Image =" + image + ", Price =" + price + ", Brand =" + brand + ", Sex =" + sex + "WHERE Code =" + code);
+            Database.alterProduct(
+                    "UPDATE product " + "SET Name ='" + name + "', Image ='" + image + "', Price ='" + price + "', Brand ='" + brand + "', Sex ='" + sex + "'WHERE (Code ='" + code+"');");
             url = "/homeSeller.jsp";
         }
         
-        else {
-            Database.alterProduct("INSERT INTO product (Name, Image, Price, Brand, Sex) VALUES (" +name + "," + image + "," + price + "," + brand + "," + sex +")");
+        else { 
+            Database.alterProduct("INSERT INTO product (Name, Image, Price, Brand, Sex) VALUES ('" +name + "','" + image + "','" + price + "','" + brand + "','" + sex +"')");
             url = "/homeSeller.jsp";
         }
         getServletContext().getRequestDispatcher(url).forward(req, resp);
     }
-
-   
 
 }

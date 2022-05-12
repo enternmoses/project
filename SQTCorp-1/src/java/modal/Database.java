@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Database {
     public static String urlString = "jdbc:mysql://localhost:3306/watchshop?zeroDateTimeBehavior=CONVERT_TO_NULL";
     public static String username = "root";
-    public static String password = "123456";
+    public static String password = "";
     
     private static boolean exist(String code) {
         ArrayList<Product> list = new ArrayList<>();

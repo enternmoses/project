@@ -18,7 +18,7 @@
         <div id="logreg-forms">
             <form class="form-signin" action="login" method="post">
                 <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
-                
+
                 <input name="user"  type="text" id="inputEmail" class="form-control" placeholder="Username" required="" autofocus="">
                 <input name="pass"  type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
 
@@ -32,74 +32,82 @@
                 <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Sign up New Account</button>
             </form>
 
-            <form action="signup" method="post" class="form-signup">
+            <form action="register" method="post" class="form-signup">
                 <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign up</h1>
                 <input name="user" type="text" id="user-name" class="form-control" placeholder="User name" required="" autofocus="">
+                <input name="name" type="text" id="user-real-name" class="form-control" placeholder="Name" required="" autofocus="">
                 <input name="pass" type="password" id="user-pass" class="form-control" placeholder="Password" required autofocus="">
                 <input name="repass" type="password" id="user-repeatpass" class="form-control" placeholder="Repeat Password" required autofocus="">
+                
 
+                <select name="role" id="role">
+                    <option value="buyer">Buyer</option>
+                    <option value="seller">Seller</option>
+                </select>
                 <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Sign Up</button>
                 <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Back</a>
             </form>
             <br>
             <!-- Messenger Plugin chat Code -->
-    <div id="fb-root"></div>
+            <div id="fb-root"></div>
 
-    <!-- Your Plugin chat code -->
-    <div id="fb-customer-chat" class="fb-customerchat">
-    </div>
-    
-    <div class="zalo-chat-widget" data-oaid="579745863508352884" data-welcome-message="R?t vui khi ???c h? tr? b?n!" data-autopopup="1" data-width="300" data-height="500"></div>
+            <!-- Your Plugin chat code -->
+            <div id="fb-customer-chat" class="fb-customerchat">
+            </div>
 
-<script src="https://sp.zalo.me/plugins/sdk.js"></script>
+            <div class="zalo-chat-widget" data-oaid="579745863508352884" data-welcome-message="R?t vui khi ???c h? tr? b?n!" data-autopopup="1" data-width="300" data-height="500"></div>
 
-    <script>
-      var chatbox = document.getElementById('fb-customer-chat');
-      chatbox.setAttribute("page_id", "106757352027882");
-      chatbox.setAttribute("attribution", "biz_inbox");
-    </script>
+            <script src="https://sp.zalo.me/plugins/sdk.js"></script>
 
-    <!-- Your SDK code -->
-    <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          xfbml            : true,
-          version          : 'v13.0'
-        });
-      };
+            <script>
+                var chatbox = document.getElementById('fb-customer-chat');
+                chatbox.setAttribute("page_id", "106757352027882");
+                chatbox.setAttribute("attribution", "biz_inbox");
+            </script>
 
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    </script>
+            <!-- Your SDK code -->
+            <script>
+                window.fbAsyncInit = function () {
+                    FB.init({
+                        xfbml: true,
+                        version: 'v13.0'
+                    });
+                };
+
+                (function (d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id))
+                        return;
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+            </script>
 
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script>
-            function toggleResetPswd(e) {
-                e.preventDefault();
-                $('#logreg-forms .form-signin').toggle() // display:block or none
-                $('#logreg-forms .form-reset').toggle() // display:block or none
-            }
+                function toggleResetPswd(e) {
+                    e.preventDefault();
+                    $('#logreg-forms .form-signin').toggle() // display:block or none
+                    $('#logreg-forms .form-reset').toggle() // display:block or none
+                }
 
-            function toggleSignUp(e) {
-                e.preventDefault();
-                $('#logreg-forms .form-signin').toggle(); // display:block or none
-                $('#logreg-forms .form-signup').toggle(); // display:block or none
-            }
+                function toggleSignUp(e) {
+                    e.preventDefault();
+                    $('#logreg-forms .form-signin').toggle(); // display:block or none
+                    $('#logreg-forms .form-signup').toggle(); // display:block or none
+                }
 
-            $(() => {
-                // Login Register Form
-                $('#logreg-forms #forgot_pswd').click(toggleResetPswd);
-                $('#logreg-forms #cancel_reset').click(toggleResetPswd);
-                $('#logreg-forms #btn-signup').click(toggleSignUp);
-                $('#logreg-forms #cancel_signup').click(toggleSignUp);
-            })
+                $(() => {
+                    // Login Register Form
+                    $('#logreg-forms #forgot_pswd').click(toggleResetPswd);
+                    $('#logreg-forms #cancel_reset').click(toggleResetPswd);
+                    $('#logreg-forms #btn-signup').click(toggleSignUp);
+                    $('#logreg-forms #cancel_signup').click(toggleSignUp);
+                })
         </script>
     </body>
 </html>
